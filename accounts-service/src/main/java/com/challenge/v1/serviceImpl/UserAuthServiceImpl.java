@@ -29,7 +29,7 @@ public class UserAuthServiceImpl implements User {
     @Override
     public UserEntity signIn(SignInDto signInDto) {
         UserEntity user = userDomain.getOneByEmail(signInDto.getEmail());
-        if(user != null || !hashPassword.verify(signInDto.getPassword(), user.getPassword())){
+        if(user == null || hashPassword.verify(signInDto.getPassword(), user.getPassword()) == false){
             throw new UnAuthorizedException("Invalid email or password");
         }
        return user;
