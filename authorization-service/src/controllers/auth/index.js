@@ -29,7 +29,7 @@ export const login = async (req, res) => {
         password
     })
     .then(response => {
-        const token = _signToken(response.data);
+        const token = _signToken(response.data.data);
         return res.status(HttpStatus.OK).json({...response.data, token});
     })
     .catch(error => {
