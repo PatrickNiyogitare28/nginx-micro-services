@@ -1,0 +1,26 @@
+{
+  "name": "authentication-service",
+  "version": "1.0.0",
+  "description": "The Authentication handling backend service",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "NODE_ENV=development nodemon --ignore '*swagger.json' --exec babel-node src/index.js",
+    "start:container": "NODE_ENV=container nodemon --ignore '*swagger.json' --exec babel-node src/index.js",
+    "start": "NODE_ENV=production nodemon --ignore '*swagger.json' --exec babel-node src/index.js"
+  },
+  "repository": "https://github.com/PatrickNiyogitare28/the-micro-services-challeng.git",
+  "author": "patrickniyogitare28@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.10",
+    "@babel/node": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
