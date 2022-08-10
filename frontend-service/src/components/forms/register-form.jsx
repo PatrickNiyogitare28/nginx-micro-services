@@ -75,6 +75,7 @@ const RegisterForm = () => {
     const res = await register(requestBody);
     if(!res?.success) return toast.error(res || 'Something went wrong')
     toast.success("Registered successfully ")
+    navigate('/login')
   }
 
   return (
