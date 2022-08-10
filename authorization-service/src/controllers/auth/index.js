@@ -5,14 +5,15 @@ import { HttpStatus } from '../../utils/status-code';
 const ACCOUNT_SERVICE_API_URL = process.env.ACCOUNT_SERVICE_API_URL;
 
 export const register = async (req, res) => {
-    const {firstName, lastName, email, password, userType, gender} = req.body;
+    const {firstName, lastName, email, password, userType, gender, country} = req.body;
     return axios.post(`${ACCOUNT_SERVICE_API_URL}/auth/signup`, {
         firstName,
         lastName,
         email,
         password,
         userType,
-        gender
+        gender,
+        country
     })
     .then(response => {
         return res.status(HttpStatus.OK).json(response.data);
