@@ -39,7 +39,10 @@ const LoginForm = () => {
 
     const res = await login(values);
     if(!res?.success) return toast.error(res);
+    localStorage.setItem('token', res?.token);
+    localStorage.setItem('payload', JSON.stringify(res?.data));
     toast.success("Login Successful");
+    navigate('/dashboard')
   }
 
   return (
