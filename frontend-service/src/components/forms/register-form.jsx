@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import Input from '../elements/input'
+import toast, {Toaster} from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
+import * as Yup from 'yup';
 import { MdMarkunread, MdLock, MdPerson } from 'react-icons/all'
+import { useFormik } from 'formik'
 import { getAllCountries } from '../../services/contries.service'
 import Button from '../elements/button'
-import { useFormik } from 'formik'
-import * as Yup from 'yup';
+import { register } from '../../services/auth.service'
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const [countriesOptions, setCountries] = useState([]);
   const [agreeWithTerms, setAgreeWithTerms] = useState(false);
   const [wantNewsLetter, setWantNewsLetter] = useState(false);
@@ -63,16 +67,19 @@ const RegisterForm = () => {
 
   const {values, errors, touched, getFieldProps, isValid, setFieldValue } = formik;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if(!isValid || !agreeWithTerms) return;
     let requestBody = {...values, userType: 'ADMIN'}
     delete requestBody.confirmPassword;
-    
+    const res = await register(requestBody);
+    if(!res?.success) return toast.error(res || 'Something went wrong')
+    toast.success("Registered successfully ")
   }
 
   return (
     <div className="shadow-sm  rounded-sm border-t-[8px] border-t-primary bg-white p-10 w-full">
+      <Toaster />
       <div className="px-[20%] mt-2">
         <h1 className="text-center font-bold text-[1.5em]">
           Responsive Registration Form
@@ -231,6 +238,10 @@ const RegisterForm = () => {
          disabled={(!isValid || !agreeWithTerms) ? true : false}
          onClick={handleSubmit} 
         />
+      </div>
+
+      <div className='mt-[1em]'>
+        <label className='cursor-pointer  text-sm' onClick={() => navigate('/login')}>Have account ? Login</label>
       </div>
     </div>
   )

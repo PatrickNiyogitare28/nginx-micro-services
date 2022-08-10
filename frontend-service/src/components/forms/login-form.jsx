@@ -4,8 +4,12 @@ import { MdMarkunread, MdLock, MdPerson } from 'react-icons/all'
 import Button from '../elements/button'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
+import { login } from '../../services/auth.service'
+import  toast, {Toaster} from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const errorInputStyle = {
     default: {
         border: '1px solid red',
@@ -30,12 +34,17 @@ const LoginForm = () => {
 
   const {values, errors, touched, getFieldProps, isValid, setFieldValue } = formik;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const res = await login(values);
+    if(!res?.success) return toast.error(res);
+    toast.success("Login Successful");
   }
 
   return (
     <div className="shadow-sm  rounded-sm border-t-[8px] border-t-primary bg-white p-10 w-full">
+      <Toaster />
       <div className="px-[20%] mt-2">
         <h1 className="text-center font-bold text-[1.5em]">
           Login to continue
@@ -72,6 +81,10 @@ const LoginForm = () => {
          disabled={(!isValid) ? true : false}
          onClick={handleSubmit} 
         />
+      </div>
+
+      <div className='mt-[1em]'>
+        <label className='cursor-pointer  text-sm' onClick={() => navigate('/')}>Have no account? Register</label>
       </div>
     </div>
   )

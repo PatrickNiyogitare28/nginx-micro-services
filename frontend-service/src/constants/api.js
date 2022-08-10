@@ -1,0 +1,1 @@
+export const ENTRY_SERVICE_URL = 'http://localhost:5000/api/v1';
