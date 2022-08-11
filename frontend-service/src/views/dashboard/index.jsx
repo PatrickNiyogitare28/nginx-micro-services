@@ -40,7 +40,7 @@ const Dashboard = () => {
         <>
             <Layout>
                 <div>
-                    <div className='px-8 flex justify-between'>
+                    <div className='px-8 flex justify-between wrapper-header'>
                         <div className={`flex gap-4 text-sm`}>
                             {(user?.userType === 'ADMIN' || user?.userType === 'PATIENT') &&
                                 <label 
