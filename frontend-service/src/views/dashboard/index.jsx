@@ -4,12 +4,15 @@ import Button from '../../components/elements/button';
 import Table from '../../components/elements/table';
 import Layout from '../../layout';
 import { getMedicalData } from '../../services/medical-data.service';
+import Modal from '../../components/modal';
+import CreateUser from '../../components/forms/create-user-form';
 
 
 const Dashboard = () => {
     const [user, setUser] = useState();
     const [activeTab, setActiveTab] = useState(1);
     const [medicalData, setMedicalData] = useState();
+    const [showModal, setShowModal] = useState(false);
     const payload = JSON.parse(localStorage.getItem('payload'));
 
     useEffect(() => {
@@ -34,9 +37,10 @@ const Dashboard = () => {
         setMedicalData(res);
     }
     return (
+        <>
             <Layout>
                 <div>
-                    <div className='px-8 flex justify-between'>
+                    <div className='px-8 flex justify-between wrapper-header'>
                         <div className={`flex gap-4 text-sm`}>
                             {(user?.userType === 'ADMIN' || user?.userType === 'PATIENT') &&
                                 <label 
@@ -59,7 +63,7 @@ const Dashboard = () => {
                         </div>
                         {(user?.userType === 'ADMIN') &&
                             <div className='w-[200px]'> 
-                            <Button label={"ADD USER"} onClick={() => {}} />
+                            <Button label={"ADD USER"} onClick={() => setShowModal(true)} />
                             </div>
                         }
                     </div>
@@ -69,6 +73,12 @@ const Dashboard = () => {
                     </div>
                 </div>
             </Layout>
+            {showModal && 
+                <Modal onClose={() => setShowModal(false)}>
+                    <CreateUser onClose={() => setShowModal(false)}/>        
+                </Modal>
+            }
+            </>
     )
 }
 
