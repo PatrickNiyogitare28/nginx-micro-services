@@ -1,0 +1,33 @@
+version: '2'
+
+services: 
+  authentication-service:
+    image: 'authentication-service'
+    build:
+      context: ./authentication-service
+      dockerfile: Dockerfile
+    container_name: authentication-service
+    ports:
+      - "8080:8080"
+  authorization-service:
+    image: 'authorization-service'
+    build:
+      context: ./authorization-service
+      dockerfile: Dockerfile
+    container_name: authorization-service
+    ports:
+      - "5000:5000"
+    depends_on:
+      - authentication-service
+  frontend-service:
+    image: 'frontend-service'
+    build:
+      context: ./frontend-service
+      dockerfile: Dockerfile.dev
+    container_name: frontend-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - authorization-service
+     
+  
