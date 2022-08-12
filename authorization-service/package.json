@@ -4,9 +4,8 @@
   "description": "The Authentication handling backend service",
   "main": "index.js",
   "scripts": {
-    "start:dev": "NODE_ENV=development nodemon --ignore '*swagger.json' --exec babel-node src/index.js",
-    "start:container": "NODE_ENV=container nodemon --ignore '*swagger.json' --exec babel-node src/index.js",
-    "start": "NODE_ENV=production nodemon --ignore '*swagger.json' --exec babel-node src/index.js"
+    "start:dev": "NODE_ENV=development nodemon  --exec babel-node src/index.js",
+    "start": "NODE_ENV=development nodemon  --exec babel-node src/index.js"
   },
   "repository": "https://github.com/PatrickNiyogitare28/the-micro-services-challeng.git",
   "author": "patrickniyogitare28@gmail.com",
