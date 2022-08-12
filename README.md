@@ -48,7 +48,7 @@ Running the service
 ```sh
 $ yarn dev
 # npm run dev
-``
+```
 
 ## Containerization
 
