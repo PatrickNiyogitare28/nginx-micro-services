@@ -204,7 +204,7 @@ const CreateUser = ({onClose}) => {
 
         <select
           id="countries"
-          class="mt-4 border-gray-border border-[2px] text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="mt-4 border-gray-border border-[2px] text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           onChange={(event) => setFieldValue('country', event.target.value)}
       >
           {countriesOptions.map((country, index) => (
@@ -217,7 +217,7 @@ const CreateUser = ({onClose}) => {
 
         <select
           id="userType"
-          class="mt-4 border-gray-border border-[2px] text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="mt-4 border-gray-border border-[2px] text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           onChange={(event) => setFieldValue('userType', event.target.value)}
       >
           {userTypes.map((type, index) => (
