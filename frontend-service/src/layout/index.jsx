@@ -20,7 +20,7 @@ const AppNav = () => {
   }
 
   return (
-    <div className='w-full h-[80px] shadow-sm flex justify-between p-4'>
+    <div className='w-full h-[80px] shadow-sm flex justify-between p-4 px-8 items-center'>
         <div>
             <label className='font-extrabold'>{userType}</label>
         </div>

@@ -187,7 +187,7 @@ const RegisterForm = () => {
 
         <select
           id="countries"
-          class="mt-4 border-gray-border border-[2px] text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="mt-4 border-gray-border border-[2px] text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
           onChange={(event) => setFieldValue('country', event.target.value)}
       >
           {countriesOptions.map((country, index) => (
@@ -210,7 +210,7 @@ const RegisterForm = () => {
           />
           <label
             for="default-checkbox"
-            class="ml-2 text-[13px] font-medium text-gray-800 dark:text-gray-300"
+            class="ml-2 text-[13px] font-medium text-gray-800 "
           >
             I agree with terms and conditions
           </label>
@@ -226,7 +226,7 @@ const RegisterForm = () => {
          />
           <label
             for="default-checkbox"
-            class="ml-2 font-medium text-gray-800 dark:text-gray-300 text-[13px]"
+            class="ml-2 font-medium text-gray-800  text-[13px]"
           >
             I want to receive newsletter
           </label>
