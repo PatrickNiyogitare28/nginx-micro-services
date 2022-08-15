@@ -2,7 +2,7 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import { HttpStatus } from '../../utils/status-code';
 
-const ACCOUNT_SERVICE_API_URL = process.env.ACCOUNT_SERVICE_API_URL;
+const ACCOUNT_SERVICE_API_URL = process.env.NODE_ENV === 'development' ? process.env.DEVELOPMENT_ACCOUNT_SERVICE_API_URL : process.env.CONTAINER_ACCOUNT_SERVICE_API_URL;
 
 export const register = async (req, res) => {
     const {firstName, lastName, email, password, userType, gender, country} = req.body;
@@ -16,10 +16,10 @@ export const register = async (req, res) => {
         country
     })
     .then(response => {
-        return res.status(HttpStatus.OK).json(response.data);
+        return res.status(HttpStatus.OK).json(response?.data);
     })
     .catch(error => {
-        return res.status(error?.response?.data?.status || HttpStatus.INTERNAL_SERVER_ERROR).json(error.response.data);
+        return res.status(error?.response?.data?.status || HttpStatus.INTERNAL_SERVER_ERROR).json(error?.response?.data || error);
     })
 }
 
@@ -30,11 +30,11 @@ export const login = async (req, res) => {
         password
     })
     .then(response => {
-        const token = _signToken(response.data.data);
-        return res.status(HttpStatus.OK).json({...response.data, token});
+        const token = _signToken(response?.data?.data);
+        return res.status(HttpStatus.OK).json({...response?.data, token});
     })
     .catch(error => {
-        return res.status(error?.response?.data?.status || HttpStatus.INTERNAL_SERVER_ERROR).json(error.response.data);
+        return res.status(error?.response?.data?.status || HttpStatus.INTERNAL_SERVER_ERROR).json(error?.response?.data || error);
     })
     
 }

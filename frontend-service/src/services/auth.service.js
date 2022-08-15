@@ -2,7 +2,7 @@ import axios from "axios"
 import { ENTRY_SERVICE_URL } from "../constants/api"
 
 export const login = async (data) => {
-    return axios.post(`http://localhost:5000/api/v1/auth/login`, data)
+    return axios.post(`${ENTRY_SERVICE_URL}/auth/login`, data)
     .then((response) => {
         return response.data
     }

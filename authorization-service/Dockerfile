@@ -1,8 +1,10 @@
 FROM node:18-alpine
 
-WORKDIR /app
+WORKDIR /usr/app
 
-COPY package*.json .
+COPY package.json .
+
+RUN npm install -g npm@8.17.0
 
 RUN npm install
 
