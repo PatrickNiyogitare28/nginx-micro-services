@@ -1,6 +1,6 @@
 import 'dotenv/config'
-import express from 'express';
 import cors from 'cors';
+import express from 'express';
 import AuthRoute from './routers/auth';
 import MedicalDataRoute from './routers/medical-data';
 
@@ -22,4 +22,4 @@ const API_PREFIX = process.env.API_PREFIX;
 app.use(`${API_PREFIX}/auth`, AuthRoute);
 app.use(`${API_PREFIX}/medical-data`, MedicalDataRoute);
 
-app.listen(PORT, () => console.log('Server started on port '+PORT));
+app.listen(PORT, () => console.log('Server started on port '+PORT+' ......'));
