@@ -61,4 +61,4 @@ $ docker-compose up
 ```
 
 ## Author
-patricckniyogitare28@gmail.ccom
+patrickniyogitare28@gmail.ccom
